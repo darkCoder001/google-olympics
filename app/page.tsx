@@ -32,8 +32,8 @@ export default function Home() {
   return (
     <div className="h-screen bg-black">
       <Hero />
-      <About />
-      <Roadmap cards={roadmapCards} />;
+      {/* <About />
+      <Roadmap cards={roadmapCards} />; */}
     </div>
   );
 }
