@@ -1,11 +1,53 @@
 "use client"
 
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, useAnimate } from "framer-motion"
+import { useEffect, useRef } from "react"
+import { cn } from "@/lib/utils"
+
+const BorderBeam = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+  return (
+    <div className={cn("relative rounded-xl", className)}>
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-beam"></div>
+      <div className="relative bg-[#1a2e2a] rounded-xl p-8">{children}</div>
+    </div>
+  )
+}
+
+const TextGenerateEffect = ({ words }: { words: string }) => {
+  const [scope, animate] = useAnimate()
+  const mountRef = useRef(false)
+
+  useEffect(() => {
+    if (!mountRef.current) {
+      mountRef.current = true
+      animate(
+        "span",
+        { opacity: 1 },
+        {
+          duration: 2,
+          delay: (i) => i * 0.2, // Corrected stagger function
+        },
+      )
+    }
+  }, [animate, scope.current]) // Added animate to dependencies
+
+  const wordsArray = words.split(" ")
+
+  return (
+    <motion.div ref={scope}>
+      {wordsArray.map((word, idx) => (
+        <motion.span key={word + idx} className="opacity-0 inline-block mr-1">
+          {word + " "}
+        </motion.span>
+      ))}
+    </motion.div>
+  )
+}
 
 export function About() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-black text-white px-8 py-16 overflow-hidden">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-[#1a2e2a] text-white px-8 py-16 overflow-hidden">
       {/* Image Section */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center mb-12 md:mb-0"
@@ -14,7 +56,7 @@ export function About() {
         transition={{ duration: 0.8, delay: 0.2 }}
       >
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-emerald-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
           <Image
             src="/images/advitya.png"
             alt="About Event"
@@ -32,23 +74,23 @@ export function About() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <h2 className="text-5xl font-extrabold mb-6 relative">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">
-            About the Event
-          </span>
-          <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-red-500 to-orange-400"></div>
-        </h2>
-        <p className="text-lg opacity-90 leading-relaxed mb-8 text-orange-100">
-          Experience the ultimate challenge at Google Olympic VIT Bhopal. Compete, innovate, and showcase your skills in
-          this thrilling competition!
-        </p>
-        <motion.button
-          className="px-8 py-3 bg-gradient-to-r from-red-600 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Learn More
-        </motion.button>
+        <BorderBeam className="group">
+          <h2 className="text-5xl font-extrabold mb-6 relative">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">
+              About the Event
+            </span>
+            <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-teal-400 to-emerald-300"></div>
+          </h2>
+          <div className="text-lg opacity-90 leading-relaxed mb-8 text-emerald-50">
+            <TextGenerateEffect words="Experience the ultimate challenge at Google Olympic VIT Bhopal. Compete, innovate, and showcase your skills in this thrilling competition!" />
+          </div>
+          <motion.div className="group relative overflow-hidden rounded-xl p-0.5" whileHover={{ scale: 1.02 }}>
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-400 animate-beam"></div>
+            <button className="relative flex items-center justify-center w-full px-8 py-4 bg-[#1a2e2a] rounded-xl text-white font-semibold transition-all group-hover:bg-[#243b36]">
+              <span className="relative z-10">Learn More</span>
+            </button>
+          </motion.div>
+        </BorderBeam>
       </motion.div>
     </div>
   )
