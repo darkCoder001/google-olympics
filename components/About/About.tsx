@@ -26,11 +26,11 @@ const TextGenerateEffect = ({ words }: { words: string }) => {
         { opacity: 1 },
         {
           duration: 2,
-          delay: (i) => i * 0.2, // Corrected stagger function
+          delay: (i) => i * 0.2,
         },
       )
     }
-  }, [animate, scope.current]) // Added animate to dependencies
+  }, [animate, scope.current])
 
   const wordsArray = words.split(" ")
 
@@ -47,7 +47,13 @@ const TextGenerateEffect = ({ words }: { words: string }) => {
 
 export function About() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-[#1a2e2a] text-white px-8 py-16 overflow-hidden">
+    <div className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-[#1a2e2a] text-white px-8 py-16 overflow-hidden">
+      {/* Torn Paper Effect */}
+      <div className="absolute top-0 left-0 w-full">
+        <Image src="/images/torn1.svg" alt="Torn Paper Top" width={1920} height={100} className="w-full" />
+      </div>
+      
+      
       {/* Image Section */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center mb-12 md:mb-0"
