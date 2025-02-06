@@ -1,7 +1,13 @@
 "use client";
-import Image from "next/image";
+
 import React, { useState } from "react";
+import Image from "next/image";
+import { Bangers } from "next/font/google";
+
 import { cn } from "@/lib/utils";
+
+// TODO: A BETTER FONT ?
+const bangers = Bangers({ subsets: ['latin'], weight: "400" })
 
 export const Card = React.memo(
 	({
@@ -10,12 +16,13 @@ export const Card = React.memo(
 		hovered,
 		setHovered,
 	}: {
-		card: any;
+		card: Card;
 		index: number;
 		hovered: number | null;
 		setHovered: React.Dispatch<React.SetStateAction<number | null>>;
 	}) => (
 		<div
+			// TODO: TOUCH SCREEN
 			onMouseEnter={() => setHovered(index)}
 			onMouseLeave={() => setHovered(null)}
 			className={cn(
@@ -36,7 +43,12 @@ export const Card = React.memo(
 				)}
 			>
 				<div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-					{card.title}
+					<span className="font-bold">
+						{card.title}
+					</span>
+					<div className="mt-4 text-lg overflox-hidden text-ellipsis">
+						{card.content}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -48,20 +60,22 @@ Card.displayName = "Card";
 type Card = {
 	title: string;
 	src: string;
+	content: string;
 };
 
-
-
-export function FocusCards({ cards }: { cards: Card[] }) {
+export function Roadmap({ cards }: { cards: Card[] }) {
 	const [hovered, setHovered] = useState<number | null>(null);
 
 	return (
-		<div className="mt-3">
-			<h2 className="text-5xl font-extrabold mb-6 relative flex justify-center items-center mx-auto">
-				<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">
-					Roadmap
-				</span>
-				<div className="absolute -bottom-2 left-[calc(50%_-_9rem)] w-24 h-1 bg-gradient-to-r from-red-500 to-orange-400"></div>
+		<div className="bg-gradient-to-tr from-[#9b825e]">
+			{/* TODO: IF PROVIDED ADD A BACKGROUND OVERLAY IMAGE */}
+			<h2 className="text-6xl font-extrabold mb-6 relative flex justify-center items-center mx-auto">
+				<p className="text-transparent bg-clip-text bg-gradient-to-r from-green-800 to-green-950 px-5 mt-5">
+					<span className={bangers.className}>
+						The Roadmap
+					</span>
+				</p>
+				<div className="absolute -bottom-2  w-24 h-1 bg-gradient-to-r from-green-800 to-green-950"></div>
 			</h2>
 
 			<div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
