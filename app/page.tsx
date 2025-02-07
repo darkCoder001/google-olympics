@@ -1,5 +1,6 @@
 import { About } from "@/components/About/About";
 import Hero from "@/components/Hero/Hero";
+import { Leaderboard } from "@/components/Leaderboard/Leaderboard";
 import { FocusCards as Roadmap } from "@/components/ui/focus-cards";
 
 const roadmapCards = [
@@ -32,6 +33,7 @@ export default function Home() {
       <Hero />
       <About />
       {/* <Roadmap cards={roadmapCards} />; */}
+      <Leaderboard />
     </div>
   );
 }

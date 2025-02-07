@@ -5,11 +5,12 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'www.icegif.com',
+        protocol: "https",
+        hostname: "www.icegif.com",
       },
     ],
-  }
+    domains: ["flagcdn.com"],
+  },
 };
 
 export default nextConfig;

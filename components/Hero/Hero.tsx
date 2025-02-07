@@ -1,5 +1,4 @@
 "use client";
-import { div } from "framer-motion/client";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 
