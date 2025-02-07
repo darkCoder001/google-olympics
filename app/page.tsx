@@ -2,7 +2,6 @@ import { About } from "@/components/About/About";
 import Hero from "@/components/Hero/Hero";
 import { FocusCards as Roadmap } from "@/components/ui/focus-cards";
 
-
 const roadmapCards = [
   {
     title: "Level 1",
@@ -27,13 +26,12 @@ const roadmapCards = [
   },
 ];
 
-
 export default function Home() {
   return (
     <div className="h-screen bg-black">
       <Hero />
-      {/* <About />
-      <Roadmap cards={roadmapCards} />; */}
+      <About />
+      {/* <Roadmap cards={roadmapCards} />; */}
     </div>
   );
 }
