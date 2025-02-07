@@ -33,7 +33,7 @@ export default function Home() {
       <Hero />
       <About />
       {/* <Roadmap cards={roadmapCards} />; */}
-      <Leaderboard />
+      {/* <Leaderboard /> */}
     </div>
   );
 }
