@@ -91,7 +91,7 @@ const Hero = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-600 to-blue-black">
+      <div className="md:hidden relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-600 to-blue-black">
         {/* Animated background overlay */}
         <div className="absolute inset-0 bg-black/30 z-0" />
 
