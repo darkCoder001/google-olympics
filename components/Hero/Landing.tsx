@@ -76,7 +76,7 @@ export const Landing = () => {
 					<p className="text-base mt-4">presents</p>
 				</div>
 			</div>
-			<AttentionSeeker delay={3500} effect="flash">
+			<AttentionSeeker triggerOnce delay={3500} effect="flash">
 				<div
 					className={`text-[160px] leading-[70px] text-center text-balance shadow-xl flex flex-col items-center justify-center max-[520px]:text-[100px] max-[520px]:leading-[40px] ${jersey10.className}`}
 				>
