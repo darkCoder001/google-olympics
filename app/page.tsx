@@ -1,6 +1,7 @@
 import { About } from "@/components/About/About";
 import Hero from "@/components/Hero/Hero";
 import { Landing } from "@/components/Hero/Landing";
+import { Leaderboard } from "@/components/Leaderboard/Leaderboard";
 import { FocusCards as Roadmap } from "@/components/ui/focus-cards";
 
 const roadmapCards = [
@@ -31,9 +32,11 @@ export default function Home() {
 	return (
 		<div className="h-screen w-screen">
 			<Landing />
+			<About />
 			{/*<Hero />
 	  		<About />
-      		<Roadmap cards={roadmapCards} />; */}
+      		<Roadmap cards={roadmapCards} />
+			<Leaderboard /> */}
 		</div>
 	);
 }
