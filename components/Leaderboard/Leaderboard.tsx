@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
+import { Jersey_10, Poppins } from "next/font/google";
+import { LeaderboardLoading } from "@/components/Leaderboard/Loading/LeaderboardLoading";
 
 // Define the Team type
 interface Team {
@@ -18,6 +20,9 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
+
+const jersey = Jersey_10({ subsets: ["latin"], weight: "400" });
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
 export function Leaderboard() {
   const router = useRouter();
@@ -53,12 +58,18 @@ export function Leaderboard() {
     fetchTeams();
   }, []);
 
+  if (loading) {
+    return <LeaderboardLoading items={5} text="Top Teams" />;
+  }
+
   return (
-    <div className="w-full p-6 bg-slate-900 shadow-2xl">
-      <h2 className="text-3xl font-bold mb-6 text-center text-white">
+    <div className="w-full p-6 bg-slate-800 bg-opacity-70 shadow-2xl">
+      <h2
+        className={`text-8xl font-bold mb-6 text-center text-red-700 ${jersey.className}`}
+      >
         Top Teams
       </h2>
-      <div className="overflow-x-auto">
+      <div className={`overflow-x-auto ${poppins.className}`}>
         <table className="w-full">
           <thead>
             <tr>
