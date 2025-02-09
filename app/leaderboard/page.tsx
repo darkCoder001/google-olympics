@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Image from "next/image";
 
+import { Jersey_10, Poppins } from "next/font/google";
+import { LeaderboardLoading } from "@/components/Leaderboard/Loading/LeaderboardLoading";
+
+const jersey = Jersey_10({ subsets: ["latin"], weight: "400" });
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+
 interface Team {
   rank: number;
   name: string;
@@ -51,11 +57,7 @@ const Page = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-900 p-8 flex items-center justify-center">
-        <div className="text-white">Loading...</div>
-      </div>
-    );
+    return <LeaderboardLoading items={10} text="Leaderboard" />;
   }
 
   if (error) {
@@ -68,10 +70,14 @@ const Page = () => {
 
   return (
     <div className="p-6 bg-black min-h-screen flex flex-col items-center">
-      <h1 className="text-4xl font-bold mb-6 text-slate-200">Leaderboard</h1>
+      <h1
+        className={`text-9xl font-bold mb-6 text-red-700 ${jersey.className}`}
+      >
+        Leaderboard
+      </h1>
       <div className="w-full max-w-4xl bg-gray-900 rounded-lg shadow-lg overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full">
+          <table className={`min-w-full ${poppins.className}`}>
             <thead>
               <tr className="bg-gray-800">
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
