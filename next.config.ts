@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.icegif.com",
+        hostname: "imgcdn.stablediffusionweb.com",
       },
     ],
     domains: ["flagcdn.com"],
