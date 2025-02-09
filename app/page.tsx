@@ -14,11 +14,11 @@ export default function Home() {
       <Navbar />
       <Landing />
       <About />
-      <Roadmap cards={roadmapCards} />
-      {/* <CarouselCard /> */}
+      {/* <Roadmap cards={roadmapCards} />
+       <CarouselCard /> 
       <Leaderboard />
       <Contact />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
