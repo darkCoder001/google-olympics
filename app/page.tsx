@@ -14,11 +14,14 @@ export default function Home() {
       <Navbar />
       <Landing />
       <About />
-      {/* <Roadmap cards={roadmapCards} />
-       <CarouselCard /> 
-      <Leaderboard />
+      <Roadmap cards={roadmapCards} />
+      <CarouselCard />
+      {/* stupid fix, will cleanup after classes end */}
+      <div className="hidden lg:block mt-32 md:mt-24">
+      </div>
+      {/* <Leaderboard /> */}
       <Contact />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
