@@ -10,7 +10,7 @@ export function CarouselCard() {
 
   return (
     <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold font-sans text-stone-50">
         Lorem ipsum dolor sit amet.
       </h2>
       <Carousel items={cards} />
@@ -25,10 +25,10 @@ const Content = () => {
         return (
           <div
             key={"content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
+            className="bg-[#F5F5F7] p-8 md:p-14 rounded-3xl mb-4"
           >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
+            <p className="text-neutral-600 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+              <span className="font-bold text-stone-50">
                 Lorem ipsum dolor sit amet.
               </span>{" "}
               Consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
