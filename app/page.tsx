@@ -1,4 +1,4 @@
-import { About } from "@/components/About/About";
+import About from "@/components/About/About";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { CarouselCard } from "@/components/Games/Carousel";

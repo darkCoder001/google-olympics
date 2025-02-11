@@ -1,124 +1,169 @@
 "use client";
 
-import Image from "next/image";
-import { motion, useAnimate } from "framer-motion";
-import { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Jersey_10 } from "next/font/google";
 
-const BorderBeam = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("relative rounded-xl", className)}>
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-beam"></div>
-      <div className="relative bg-[#1a2e2a] rounded-xl p-8">{children}</div>
-    </div>
-  );
-};
+interface Star {
+  id: number;
+  left: string;
+  top: string;
+  animationDuration: string;
+  size: number;
+}
 
-const TextGenerateEffect = ({ words }: { words: string }) => {
-  const [scope, animate] = useAnimate();
-  const mountRef = useRef(false);
+const jersey10 = Jersey_10({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const StarBackground: React.FC = () => {
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
-    if (!mountRef.current) {
-      mountRef.current = true;
-      animate(
-        "span",
-        { opacity: 1 },
-        {
-          duration: 2,
-          delay: (i) => i * 0.2,
-        }
-      );
-    }
-  }, [animate, scope.current]);
+    const generateStars = () => {
+      const newStars: Star[] = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDuration: `${Math.random() * 3 + 2}s`,
+        size: Math.random() * 3 + 1,
+      }));
+      setStars(newStars);
+    };
 
-  const wordsArray = words.split(" ");
+    generateStars();
+  }, []);
 
   return (
-    <motion.div ref={scope}>
-      {wordsArray.map((word, idx) => (
-        <motion.span key={word + idx} className="opacity-0 inline-block mr-1">
-          {word + " "}
-        </motion.span>
+    <div className="absolute inset-0 overflow-hidden">
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="absolute rounded-full bg-white animate-pulse"
+          style={{
+            left: star.left,
+            top: star.top,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            animationDuration: star.animationDuration,
+            opacity: Math.random() * 0.5 + 0.25,
+          }}
+        />
       ))}
-    </motion.div>
+    </div>
   );
 };
 
-export function About() {
+const About = () => {
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-black/90 text-white px-8 py-16 overflow-hidden">
-      {/* Torn Paper Effect */}
-      {/* <div className="absolute top-0 left-0 w-full">
-        <Image
-          src="/images/torn1.svg"
-          alt="Torn Paper Top"
-          width={1920}
-          height={100}
-          className="w-full"
-        />
-      </div> */}
+    <main className="relative min-h-screen bg-black text-white overflow-hidden py-24">
+      <StarBackground />
 
-      {/* Image Section */}
-      <motion.div
-        className="w-full md:w-1/2 flex justify-center mb-12 md:mb-0"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-emerald-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-          <Image
-            src="/images/advitya.png"
-            alt="About Event"
-            width={400}
-            height={400}
-            className="relative z-10 rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300 ease-in-out"
-          />
-        </div>
-      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />
 
-      {/* Text Section */}
-      <motion.div
-        className="w-full md:w-1/2 text-center md:text-left"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        <BorderBeam className="group">
-          <h2 className="text-5xl font-extrabold mb-6 relative">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">
-              About the Event
-            </span>
-            <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-teal-400 to-emerald-300"></div>
-          </h2>
-          <div className="text-lg opacity-90 leading-relaxed mb-8 text-emerald-50">
-            <p>
-              {" "}
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
-              laborum expedita nesciunt ipsum, cupiditate odio numquam fuga nisi
-              consectetur totam similique ex corporis, perspiciatis voluptatum
-              maxime impedit facilis quas est.
-            </p>
-            {/* <TextGenerateEffect words="Experience the ultimate challenge at Google Olympic VIT Bhopal. Compete, innovate, and showcase your skills in this thrilling competition!" /> */}
-          </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
           <motion.div
-            className="group relative overflow-hidden rounded-xl p-0.5"
-            whileHover={{ scale: 1.02 }}
+            className="flex flex-col items-center space-y-6 mb-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-400 animate-beam"></div>
-            <button className="relative flex items-center justify-center w-full px-8 py-4 bg-[#1a2e2a] rounded-xl text-white font-semibold transition-all group-hover:bg-[#243b36]">
-              <span className="relative z-10">Learn More</span>
-            </button>
+            <motion.div
+              className="w-24 h-24 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 p-1 relative overflow-hidden"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1, rotate: 360 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+                <span className="text-3xl">🏆</span>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 animate-pulse" />
+            </motion.div>
           </motion.div>
-        </BorderBeam>
-      </motion.div>
-    </div>
+
+          <motion.h1
+            className={`text-8xl sm:text-9xl font-bold text-center mb-8 leading-tight pb-4 ${jersey10.className}`}
+            style={{
+              background:
+                "linear-gradient(to right, #9333ea, #ec4899, #3b82f6)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            About
+          </motion.h1>
+
+          <motion.p
+            className="text-xl sm:text-2xl text-gray-300 mb-8 text-center leading-relaxed"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Hosted by{" "}
+            <span className="font-semibold text-white">
+              Google Developer Group – VIT Bhopal
+            </span>
+            , this flagship event is the ultimate fusion of tech, strategy, and
+            sportsmanship! Teams of four will represent different countries and
+            battle through mind-bending challenges that test logic, technical
+            skills, quick thinking, and teamwork.
+          </motion.p>
+
+          <motion.p
+            className="text-lg sm:text-xl text-gray-400 mb-8 text-center leading-relaxed"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            From deciphering pixelated images to solving high-pressure coding
+            challenges, every round will push participants to the limit. Teams
+            must protect their stronghold while strategically taking down their
+            opponents in a battle of wits and execution.
+          </motion.p>
+
+          <motion.div
+            className="bg-gray-800 text-gray-200 rounded-xl p-6 text-center shadow-lg mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <p className="text-xl sm:text-2xl font-semibold text-white">
+              📅 Date:{" "}
+              <span className="font-bold text-pink-400">
+                21st February 2025
+              </span>
+            </p>
+            <p className="text-xl sm:text-2xl font-semibold text-white">
+              📍 Venue:{" "}
+              <span className="font-bold text-purple-400">
+                ARCH-102, VIT Bhopal
+              </span>
+            </p>
+            <p className="text-xl sm:text-2xl font-semibold text-white">
+              ⏰ Time:{" "}
+              <span className="font-bold text-blue-400">10 AM - 3 PM</span>
+            </p>
+          </motion.div>
+
+          <motion.p
+            className="text-lg sm:text-xl text-gray-400 text-center leading-relaxed"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            With limited spots and high stakes, this is your chance to compete,
+            collaborate, and claim victory! Gather your squad and sign up now –
+            the battle for glory begins!
+          </motion.p>
+        </div>
+      </div>
+    </main>
   );
-}
+};
+
+export default About;
