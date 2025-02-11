@@ -53,7 +53,7 @@ const TextGenerateEffect = ({ words }: { words: string }) => {
 
 export function About() {
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-tr from-[#1a2e2a] text-white px-8 py-16 overflow-hidden">
+    <div className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-black/90 text-white px-8 py-16 overflow-hidden">
       {/* Torn Paper Effect */}
       {/* <div className="absolute top-0 left-0 w-full">
         <Image

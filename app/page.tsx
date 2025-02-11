@@ -11,16 +11,15 @@ import { roadmapCards } from "@/data/roadmap";
 export default function Home() {
   return (
     <div className="h-screen w-screen overflow-x-hidden">
-      <Navbar />
+      {/* <Navbar /> */}
       <Landing />
       <About />
-      <Roadmap cards={roadmapCards} />
-      <CarouselCard />
+      {/* <Roadmap cards={roadmapCards} /> */}
+      {/* <CarouselCard /> */}
       {/* stupid fix, will cleanup after classes end */}
-      <div className="hidden lg:block mt-32 md:mt-24">
-      </div>
+      {/* <div className="hidden lg:block mt-32 md:mt-24"></div> */}
       {/* <Leaderboard /> */}
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );
