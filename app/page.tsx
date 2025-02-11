@@ -6,7 +6,7 @@ import { Landing } from "@/components/Hero/Landing";
 import { Leaderboard } from "@/components/Leaderboard/Leaderboard";
 import Navbar from "@/components/Navbar/Navbar";
 import { Roadmap } from "@/components/Roadmap/roadmap";
-import { roadmapCards } from "@/data/roadmap";
+
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       {/* <Navbar /> */}
       <Landing />
       <About />
-      {/* <Roadmap cards={roadmapCards} /> */}
+      { <Roadmap  /> }
       {/* <CarouselCard /> */}
       {/* stupid fix, will cleanup after classes end */}
       {/* <div className="hidden lg:block mt-32 md:mt-24"></div> */}

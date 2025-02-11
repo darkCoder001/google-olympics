@@ -3,106 +3,119 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Jersey_10 } from "next/font/google";
-
 import { cn } from "@/lib/utils";
+import { roadmapCheckpoints } from "@/data/roadmap";
 
 const jersey10 = Jersey_10({
-	weight: ["400"],
-	subsets: ["latin"],
+  weight: ["400"],
+  subsets: ["latin"],
 });
 
+type TroadmapCard = {
+  title: string;
+  src: string;
+  content: string;
+};
+
+type TroadmapCheckpoint = {
+  checkpoint: string;
+  cards: TroadmapCard[];
+};
+
 export const Card = React.memo(
-	({
-		card,
-		index,
-		hovered,
-		setHovered,
-	}: {
-		card: Card;
-		index: number;
-		hovered: number | null;
-		setHovered: React.Dispatch<React.SetStateAction<number | null>>;
-	}) => (
-		<div
-			onMouseEnter={() => setHovered(index)}
-			onMouseLeave={() => setHovered(null)}
-			className={cn(
-				"rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
-				hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
-			)}
-		>
-			<Image
-				src={card.src}
-				alt={card.title}
-				fill
-				className="object-cover absolute inset-0 brightness-50"
-			/>
-			<div
-				className={cn(
-					"absolute inset-0 flex items-center justify-center px-4 py-8",
-					"bg-gradient-to-b from-neutral-50 to-neutral-200 text-xl md:text-2xl font-medium text-transparent bg-clip-text",
-					hovered === index ? "transform translate-y-[70%] opacity-0" : "transform translate-y-0 opacity-100",
-					"transition-all duration-300 ease-out"
-				)}
-			>
-				<p className="font-bold">{card.title}</p>
-			</div>
-			<div
-				className={cn(
-					"absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity duration-300",
-					hovered === index ? "opacity-100" : "opacity-0"
-				)}
-			>
-				<div className="text-lg overflow-hidden text-ellipsis text-white px-4 py-8">
-					{card.content}
-				</div>
-			</div>
-		</div>
-	)
+  ({
+    card,
+    index,
+    hovered,
+    setHovered,
+  }: {
+    card: TroadmapCard;
+    index: number;
+    hovered: number | null;
+    setHovered: React.Dispatch<React.SetStateAction<number | null>>;
+  }) => (
+    <div
+      onMouseEnter={() => setHovered(index)}
+      onMouseLeave={() => setHovered(null)}
+      className={cn(
+        "rounded-xl relative bg-gray-200 dark:bg-neutral-800 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out shadow-md",
+        hovered !== null && hovered !== index && "scale-[0.96] opacity-80"
+      )}
+    >
+      <Image
+        src={card.src}
+        alt={card.title}
+        fill
+        className="object-cover absolute inset-0 brightness-75"
+      />
+      <div
+        className={cn(
+          "absolute inset-0 flex items-center justify-center px-4 py-8 text-white text-xl md:text-2xl font-bold tracking-wide text-center",
+          hovered === index ? "translate-y-full opacity-0" : "translate-y-0 opacity-100",
+          "transition-all duration-300 ease-out"
+        )}
+      >
+        {card.title}
+      </div>
+      <div
+        className={cn(
+          "absolute inset-0 bg-black/60 flex items-center justify-center transition-opacity duration-300 px-4",
+          hovered === index ? "opacity-100" : "opacity-0"
+        )}
+      >
+        <p className="text-white text-lg text-center">{card.content}</p>
+      </div>
+    </div>
+  )
 );
 
 Card.displayName = "Card";
 
-type Card = {
-	title: string;
-	src: string;
-	content: string;
-};
+export function Roadmap() {
+  const [hovered, setHovered] = useState<number | null>(null);
 
-export function Roadmap({ cards }: { cards: Card[] }) {
-	const [hovered, setHovered] = useState<number | null>(null);
+  return (
+	<div className="relative bg-black min-h-screen">
+	  {/* Full Height Background Image */}
+	<div className="absolute inset-0 w-full h-full z-[-2] bg-black brightness-100">
+		
+	</div>
 
-	return (
-		<div className="bg-gradient-to-tr from-[#66543b]">
-			<div
-				className="w-screen h-screen absolute top-0 left-0 z-[-2] brightness-80"
-				style={{
-					backgroundImage: "url(' /images/pixel-bg.jpg')",
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-				}}
-			></div>
+      {/* Roadmap Title */}
+      <div className="flex flex-col items-center py-12">
+        <h2 className="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-700 px-5">
+          <span className={jersey10.className}>The Roadmap</span>
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-700 mt-3"></div>
+      </div>
 
-			<h2 className="text-7xl font-extrabold mb-6 relative flex justify-center items-center mx-auto">
-				<p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-700 px-5 mt-5">
-					<span className={jersey10.className}>
-						The Roadmap
-					</span>
-				</p>
-				<div className="absolute -bottom-2  w-24 h-1 bg-gradient-to-r from-orange-500 to-red-700"></div>
-			</h2>
+      {/* Checkpoints */}
+      <div className="relative z-10 p-4 max-w-6xl mx-auto md:px-8 w-full">
+        {roadmapCheckpoints.map((checkpoint: TroadmapCheckpoint, checkpointIndex) => (
+          <div key={checkpointIndex} className="mb-16">
+            {/* Checkpoint Title */}
+            <h3 className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-600">
+              {checkpoint.checkpoint}
+            </h3>
+            <div className="flex justify-center my-2">
+              <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-700"></div>
+            </div>
 
-			<div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
-				{cards.map((card, index) => (
-					<Card
-						key={card.title}
-						card={card}
-						index={index}
-						hovered={hovered}
-						setHovered={setHovered}
-					/>
-				))}
-			</div>
-		</div>
-	);
+            {/* Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              {checkpoint.cards.map((card, index) => (
+                <Card
+                  key={card.title}
+                  card={card}
+                  index={index}
+                  hovered={hovered}
+                  setHovered={setHovered}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
