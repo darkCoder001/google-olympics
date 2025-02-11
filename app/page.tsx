@@ -14,7 +14,7 @@ export default function Home() {
       {/* <Navbar /> */}
       <Landing />
       <About />
-      { <Roadmap  /> }
+      {/* <Roadmap  /> }
       {/* <CarouselCard /> */}
       {/* stupid fix, will cleanup after classes end */}
       {/* <div className="hidden lg:block mt-32 md:mt-24"></div> */}
