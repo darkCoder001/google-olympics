@@ -38,15 +38,11 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
  
 ⏳ Approx Time: Around 15 minutes  
 🙋 Volunteers: Continuing from previous (2 volunteers per game keeping score, 35 volunteers total, supervisors, and hosts)  
-📝 Point System:
-  - Normal number card: 10 points
-  - Action cards: 15 points
-  - Wild Cards: 20 points
-  - Each game will have 1 pair of wild cards, 2 pairs of action cards, and the rest as number card pairs.
+
         
 🖥️ Requirements:
   - 3 games can be set up from one generic packet of UNO (108 cards)
-  - Need 15 games, so 5-6 packets of UNO cards.`
+  - Need 15 games, so 5- 6 packets of UNO cards.`
       }
     ]
   },

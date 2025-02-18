@@ -10,8 +10,10 @@ export default function Home() {
       <Navbar />
       <Landing />
       <About />
+     
      {/* <Roadmap /> */}
       <Footer />
     </div>
   );
 }
+   
