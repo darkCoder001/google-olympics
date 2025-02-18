@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Jersey_10 } from "next/font/google";
+import { rulesData } from "./rulesData";
 
 const jersey10 = Jersey_10({
   weight: ["400"],
@@ -28,24 +29,8 @@ type Checkpoint = {
   games: Game[];
 };
 
-const generateSampleData = (): Checkpoint[] => {
-  const checkpoints: Checkpoint[] = [];
-  for (let i = 1; i <= 8; i++) {
-    const games: Game[] = [];
-    for (let j = 1; j <= 3; j++) {
-      const rules: Rule[] = [];
-      for (let k = 1; k <= 5; k++) {
-        rules.push(`Rule ${k} for Game ${j} in Checkpoint ${i}`);
-      }
-      games.push({ name: `Game ${String.fromCharCode(64 + j)}`, rules });
-    }
-    checkpoints.push({ number: i, games });
-  }
-  return checkpoints;
-};
-
 const Games = () => {
-  const [checkpoints] = useState<Checkpoint[]>(generateSampleData());
+  const [checkpoints] = useState<Checkpoint[]>(rulesData);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -141,7 +126,7 @@ const LoadingScreen = () => {
           }}
           className="w-16 h-16 mb-4 mx-auto"
         >
-          <Swords className="w-full h-full text-purple-500" />
+          <Swords className="w-full h-full text-green-700" />
         </motion.div>
         <motion.h2
           animate={{
@@ -152,7 +137,7 @@ const LoadingScreen = () => {
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
-          className="text-purple-500 text-xl font-bold"
+          className="text-green-700 text-xl font-bold"
         >
           Loading Rules...
         </motion.h2>
