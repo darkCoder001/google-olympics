@@ -165,7 +165,7 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
       },
       {
         title: "Improv",
-        src: "/images/improv.webp",
+        src: "/images/Improv.webp",
         content: `📍 Location: AR Base Camp  
         
 ⏳ Approx Time: As much as it can be dragged for  
