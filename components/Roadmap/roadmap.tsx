@@ -91,7 +91,7 @@ export function Roadmap() {
 
       {/* Checkpoints */}
       <div className="relative z-10 p-4 max-w-6xl mx-auto md:px-8 w-full">
-        {roadmapCheckpoints.map((checkpoint: TroadmapCheckpoint, checkpointIndex) => (
+        {roadmapCheckpoints.map((checkpoint, checkpointIndex) => (
           <div key={checkpointIndex} className="mb-16">
             {/* Checkpoint Title */}
             <h3 className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-600">
@@ -104,13 +104,13 @@ export function Roadmap() {
             {/* Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {checkpoint.cards.map((card, index) => (
-                <Card
-                  key={card.title}
-                  card={card}
-                  index={index}
-                  hovered={hovered}
-                  setHovered={setHovered}
-                />
+          <Card
+            key={card.title}
+            card={card}
+            index={index}
+            hovered={hovered}
+            setHovered={setHovered}
+          />
               ))}
             </div>
           </div>
