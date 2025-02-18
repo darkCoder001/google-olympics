@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-import { Info, Home, Gamepad2, Trophy } from "lucide-react";
+import { Info, Map, Gamepad2, Trophy } from "lucide-react";
 
 import { FloatingDock } from "../ui/floating-dock";
 
@@ -39,7 +39,7 @@ const Navbar = () => {
     },
     {
       title: "Roadmap",
-      icon: <Home className="w-full h-full" />,
+      icon: <Map className="w-full h-full" />,
       href: "#roadmap",
     },
     {
