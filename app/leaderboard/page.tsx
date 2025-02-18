@@ -71,7 +71,7 @@ const Page = () => {
   return (
     <div className="p-6 bg-black min-h-screen flex flex-col items-center">
       <h1
-        className={`text-9xl font-bold mb-6 text-red-700 ${jersey.className}`}
+        className={`text-7xl md:text-9xl font-bold mb-6 text-red-700 ${jersey.className}`}
       >
         Leaderboard
       </h1>

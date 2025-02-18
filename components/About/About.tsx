@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Jersey_10 } from "next/font/google";
+import { Jersey_10, Poppins } from "next/font/google";
 
 interface Star {
   id: number;
@@ -14,6 +14,11 @@ interface Star {
 
 const jersey10 = Jersey_10({
   weight: ["400"],
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
@@ -99,7 +104,7 @@ const About = () => {
           </motion.h1>
 
           <motion.p
-            className="text-xl sm:text-2xl text-gray-300 mb-8 text-center leading-relaxed"
+            className={`text-xl sm:text-2xl text-gray-300 mb-8 text-center leading-relaxed ${poppins.className}`}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -115,7 +120,7 @@ const About = () => {
           </motion.p>
 
           <motion.p
-            className="text-lg sm:text-xl text-gray-400 mb-8 text-center leading-relaxed"
+            className={`text-lg sm:text-xl text-gray-400 mb-8 text-center leading-relaxed ${poppins.className}`}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
@@ -127,7 +132,7 @@ const About = () => {
           </motion.p>
 
           <motion.div
-            className="bg-gray-800 text-gray-200 rounded-xl p-6 text-center shadow-lg mb-8"
+            className={`bg-gray-800 text-gray-200 rounded-xl p-6 text-center shadow-lg mb-8 ${poppins.className}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -151,7 +156,7 @@ const About = () => {
           </motion.div>
 
           <motion.p
-            className="text-lg sm:text-xl text-gray-400 text-center leading-relaxed"
+            className={`text-lg sm:text-xl text-gray-400 text-center leading-relaxed ${poppins.className}`}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}

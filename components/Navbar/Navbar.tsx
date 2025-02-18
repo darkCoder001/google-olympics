@@ -38,14 +38,14 @@ const Navbar = () => {
       href: "#about",
     },
     {
-      title: "Rules",
+      title: "Roadmap",
       icon: <Home className="w-full h-full" />,
-      href: "/rules",
+      href: "#roadmap",
     },
     {
-      title: "Games",
+      title: "Rules",
       icon: <Gamepad2 className="w-full h-full" />,
-      href: "#games",
+      href: "/rules",
     },
     {
       title: "Leaderboard",
