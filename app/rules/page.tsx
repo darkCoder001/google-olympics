@@ -43,7 +43,7 @@ const Games = () => {
   }
 
   return (
-    <div className="min-h-screen w-full container mx-auto p-4 space-y-8 bg-black text-white">
+    <div className="min-h-screen w-full mx-auto p-4 space-y-8 bg-black text-white">
       <h1
         className={`text-9xl font-bold text-center mb-8 text-green-700 ${jersey10.className}`}
       >
