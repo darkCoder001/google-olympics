@@ -5,18 +5,18 @@ const jersey10 = Jersey_10({
   subsets: ["latin"],
 });
 
-type TroadmapCard = {
+type RoadmapCard = {
   title: string;
   content: string;
-  src?: string;
+  src: string;
 };
 
-type TroadmapCheckpoint = {
+type RoadmapCheckpoint = {
   checkpoint: string;
-  cards: TroadmapCard[];
+  cards: RoadmapCard[];
 };
 
-export const roadmapCheckpoints: TroadmapCheckpoint[] = [
+export const roadmapCheckpoints: RoadmapCheckpoint[] = [
   {
     checkpoint: "Checkpoint 1",
     cards: [
@@ -25,26 +25,23 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         src: "/images/monkey.webp",
         content: `📍 Location: Base Camp (Arch 102)
         
-  
 ⏳ Approx Time: 5-6 mins  
 🙋 Volunteers: 30 volunteers + 5 supervisors + hosts  
-🖥️ Requirements: Laptops (by the teams).`
+🖥️ Requirements: Laptops (by the teams).`,
       },
       {
         title: "Uno Flip Game",
         src: "/images/uno.jpg",
         content: `📍 Location: Base Camp (AR)
         
- 
 ⏳ Approx Time: Around 15 minutes  
 🙋 Volunteers: Continuing from previous (2 volunteers per game keeping score, 35 volunteers total, supervisors, and hosts)  
-
         
 🖥️ Requirements:
   - 3 games can be set up from one generic packet of UNO (108 cards)
-  - Need 15 games, so 5- 6 packets of UNO cards.`
-      }
-    ]
+  - Need 15 games, so 5- 6 packets of UNO cards.`,
+      },
+    ],
   },
   {
     checkpoint: "Checkpoint 2",
@@ -52,16 +49,15 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
       {
         title: "Pass-it-along Game",
         src: "/images/pass.webp",
-        content: `📍 Location: Outside Arch Building in two separate locations (C2 [road in front of AR] and C2’ [Road in front of LC])
+        content: `📍 Location: Outside Arch Building in two separate locations (C2 [road in front of AR] and C2' [Road in front of LC])
         
- 
 ⏳ Approx Time: Around 20 minutes  
 🙋 Volunteers: 10 volunteers per location + 5 supervisors per location (Total 30)  
 🖥️ Requirements:
   - Stick and plate prop being made (20)
-  - Smiley balls (20).`
-      }
-    ]
+  - Smiley balls (20).`,
+      },
+    ],
   },
   {
     checkpoint: "Checkpoint 3",
@@ -71,16 +67,15 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         src: "/images/pixel.webp",
         content: `📍 Location: Cycle parking area of AB  
         
-  
 ⏳ Approx Time: 30 minutes  
 🙋 Volunteers: 1 volunteer per team + additional support at the location (Total 20)  
 📝 Point System:
   - Score = (30 - minutes taken) * 60
         
 🖥️ Requirements:
-  - 14 papers with grids pasted on cardboard.`
-      }
-    ]
+  - 14 papers with grids pasted on cardboard.`,
+      },
+    ],
   },
   {
     checkpoint: "Checkpoint 4",
@@ -90,7 +85,6 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         src: "/images/tower.jpg",
         content: `📍 Location: Guest House  
         
-
 ⏳ Approx Time: 15 minutes  
 🙋 Volunteers: 15 volunteers + 5 supervisors (Total 20)  
 📝 Point System:
@@ -100,9 +94,9 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
 🖥️ Requirements:
   - Cups
   - Benches
-  - Smiley Balls.`
-      }
-    ]
+  - Smiley Balls.`,
+      },
+    ],
   },
   {
     checkpoint: "Checkpoint 5",
@@ -112,7 +106,6 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         src: "/images/roll.jpeg",
         content: `📍 Location: In front of Mayuri  
         
-)  
 ⏳ Approx Time: 5 minutes  
 🙋 Volunteers: Around 10 members available  
 📝 Point System:
@@ -120,14 +113,13 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
   - If less than 20 cm = -100 points
         
 🖥️ Requirements:
-  - Tissue paper roll/toilet paper roll.`
+  - Tissue paper roll/toilet paper roll.`,
       },
       {
         title: "Standing on a Leg + Throwing the Stones/Balls",
         src: "/images/onelegstand.jpg",
         content: `📍 Location: In front of Mayuri  
         
-  
 ⏳ Approx Time: 5 minutes  
 🙋 Volunteers: Around 10 members available  
 📝 Point System:
@@ -135,14 +127,13 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
   - Double or nothing increases only positive points
         
 🖥️ Requirements:
-  - Stones to throw.`
+  - Stones to throw.`,
       },
       {
         title: "Penalty Accuracy Game",
         src: "/images/penalty.jpg",
         content: `📍 Location: In front of Mayuri  
         
- 
 ⏳ Approx Time: 5 minutes  
 🙋 Volunteers: Around 10 members available  
 📝 Point System:
@@ -151,9 +142,9 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         
 🖥️ Requirements:
   - Small cardboard box (shoe box)
-  - Tennis balls.`
-      }
-    ]
+  - Tennis balls.`,
+      },
+    ],
   },
   {
     checkpoint: "Checkpoint 6",
@@ -163,7 +154,6 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         src: "/images/coderelay.jpg",
         content: `📍 Location: AR Base Camp  
         
- 
 ⏳ Approx Time: As long as possible  
 🙋 Volunteers: Final games, all volunteers available  
 📝 Point System:
@@ -171,34 +161,30 @@ export const roadmapCheckpoints: TroadmapCheckpoint[] = [
         
 🖥️ Requirements:
   - Laptops of the managing team (not participants)
-  - Bowl with code patterns.`
+  - Bowl with code patterns.`,
       },
       {
         title: "Improv",
-         src: "/images/improv.webp", 
-      content: `📍 Location: AR Base Camp  
+        src: "/images/improv.webp",
+        content: `📍 Location: AR Base Camp  
         
-
 ⏳ Approx Time: As much as it can be dragged for  
 🙋 Volunteers: All volunteers available, a few will be used  
-
         
 🖥️ Requirements:
-  - Nothing.`
+  - Nothing.`,
       },
       {
         title: "Tech Mythbuster Game",
         src: "/images/TechMyth.jpeg",
         content: `📍 Location: AR Base Camp  
         
-
 ⏳ Approx Time: 10-15 minutes  
 🙋 Volunteers: All volunteers available, a few will be used  
-
         
 🖥️ Requirements:
-  - Paper.`
-      }
-    ]
-  }
+  - Paper.`,
+      },
+    ],
+  },
 ];

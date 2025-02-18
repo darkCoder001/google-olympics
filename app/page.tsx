@@ -9,11 +9,16 @@ export default function Home() {
     <div className="h-screen w-screen overflow-x-hidden">
       <Navbar />
       <Landing />
-      <About />
-     
-     {/* <Roadmap /> */}
+      <div id="about">
+        <About />
+      </div>
+
+      {/* Add id="roadmap" here */}
+      <div id="roadmap">
+        <Roadmap />
+      </div>
+
       <Footer />
     </div>
   );
 }
-   

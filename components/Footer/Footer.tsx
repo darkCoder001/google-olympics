@@ -79,11 +79,11 @@ const Footer: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-4">DEVELOPERS</h3>
+          <h3 className="text-lg font-semibold mb-4">Roadmap</h3>
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-4">COMPANY</h3>
+          <h3 className="text-lg font-semibold mb-4">Rules</h3>
         </div>
 
         <div>
