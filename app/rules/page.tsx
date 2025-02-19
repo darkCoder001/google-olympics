@@ -29,6 +29,27 @@ type Checkpoint = {
   games: Game[];
 };
 
+const getCheckpointName = (number: number) => {
+  switch (number) {
+    case 1:
+      return "Base Camp";
+    case 2:
+      return "The Play Pit";
+    case 3:
+      return "Foodie Spot";
+    case 4:
+      return "Grand Arena";
+    case 5:
+      return "Sprint to Glory";
+    case 6:
+      return "Wildcard Checkpoint";
+    case 7:
+      return "The Final Lap";
+    default:
+      return "";
+  }
+};
+
 const Games = () => {
   const [checkpoints] = useState<Checkpoint[]>(rulesData);
   const [loading, setLoading] = useState(true);
@@ -57,7 +78,16 @@ const Games = () => {
           >
             <AccordionTrigger className="bg-zinc-950 text-white hover:bg-zinc-900 transition-colors px-4 py-2 rounded-lg">
               <h2 className="text-xl font-semibold">
-                Checkpoint {checkpoint.number}
+                {checkpoint.number === 6 ? (
+                  <span className="text-red-500">
+                    {getCheckpointName(checkpoint.number)}
+                  </span>
+                ) : (
+                  <>
+                    Checkpoint {checkpoint.number} -{" "}
+                    {getCheckpointName(checkpoint.number)}
+                  </>
+                )}
               </h2>
             </AccordionTrigger>
             <AccordionContent className="pt-4 px-4 bg-zinc-900">
