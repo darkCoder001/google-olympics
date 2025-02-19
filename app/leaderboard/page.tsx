@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Image from "next/image";
-
 import { Jersey_10, Poppins } from "next/font/google";
 import { LeaderboardLoading } from "@/components/Leaderboard/Loading/LeaderboardLoading";
+import { X, Check, Clock } from "lucide-react";
 
 const jersey = Jersey_10({ subsets: ["latin"], weight: "400" });
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
@@ -15,6 +15,7 @@ interface Team {
   name: string;
   score: number;
   flag: string;
+  status: "eliminated" | "eligible" | "selected";
 }
 
 const supabase = createClient(
@@ -32,15 +33,22 @@ const Page = () => {
       try {
         const { data, error } = await supabase
           .from("teams")
-          .select("name, score, flag")
+          .select("name, score, flag, status")
           .order("score", { ascending: false });
-
-        console.log(data);
 
         if (error) throw error;
 
+        // Sort teams based on status and score
+        const sortedTeams = data.sort((a, b) => {
+          if (a.status === "eliminated" && b.status !== "eliminated") return 1;
+          if (a.status !== "eliminated" && b.status === "eliminated") return -1;
+          if (a.status === "selected" && b.status !== "selected") return -1;
+          if (a.status !== "selected" && b.status === "selected") return 1;
+          return b.score - a.score;
+        });
+
         // Add rank to sorted data
-        const rankedTeams = data.map((team, index) => ({
+        const rankedTeams = sortedTeams.map((team, index) => ({
           ...team,
           rank: index + 1,
         }));
@@ -67,6 +75,44 @@ const Page = () => {
       </div>
     );
   }
+
+  const StatusIcon = ({ status }: { status: Team["status"] }) => {
+    switch (status) {
+      case "eliminated":
+        return (
+          <div className="inline-flex items-center justify-center w-[20px] md:w-6 h-[20px] md:h-6 bg-red-500 rounded-full">
+            <X className=" h-4 text-white" />
+          </div>
+        );
+      case "selected":
+        return (
+          <div className="inline-flex items-center justify-center w-[20px] md:w-6 h-[20px] md:h-6 bg-green-500 rounded-full">
+            <Check className=" h-4 text-white" />
+          </div>
+        );
+      case "eligible":
+        return (
+          <div className="inline-flex items-center justify-center w-[20px] md:w-6 h-[20px] md:h-6 bg-yellow-500 rounded-full">
+            <Clock className=" h-4 text-white" />
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const getRankStyle = (rank: number) => {
+    switch (rank) {
+      case 1:
+        return "animate-gold-glimmer";
+      case 2:
+        return "animate-silver-glimmer";
+      case 3:
+        return "animate-bronze-glimmer";
+      default:
+        return "";
+    }
+  };
 
   return (
     <div className="p-6 bg-black min-h-screen flex flex-col items-center">
@@ -95,13 +141,16 @@ const Page = () => {
               {teams.map((team) => (
                 <tr
                   key={team.rank}
-                  className="hover:bg-black transition duration-200"
+                  className={`hover:bg-black transition duration-200 ${getRankStyle(
+                    team.rank
+                  )}`}
                 >
-                  <td className="px-6 py-4 text-sm font-medium text-slate-300">
+                  <td className="px-6 py-4 text-sm font-medium text-slate-300 whitespace-nowrap">
                     {team.rank}
                   </td>
                   <td className="px-6 py-4 text-sm text-slate-300">
                     <div className="flex items-center space-x-3">
+                      <StatusIcon status={team.status} />
                       <Image
                         src={team.flag || "/placeholder.svg"}
                         alt={`${team.name} flag`}
