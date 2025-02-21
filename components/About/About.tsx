@@ -125,10 +125,10 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            From deciphering pixelated images to solving high-pressure coding
-            challenges, every round will push participants to the limit. Teams
-            must protect their stronghold while strategically taking down their
-            opponents in a battle of wits and execution.
+            As the games unfold, expect chaos, plot twists, emotional
+            rollercoasters, and betrayal levels straight out of a reality show.
+            The gold isn’t just a medal—it’s your ticket to immortality in
+            campus history.
           </motion.p>
 
           <motion.div
@@ -154,17 +154,6 @@ const About = () => {
               <span className="font-bold text-blue-400">10 AM - 3 PM</span>
             </p>
           </motion.div>
-
-          <motion.p
-            className={`text-lg sm:text-xl text-gray-400 text-center leading-relaxed ${poppins.className}`}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-          >
-            With limited spots and high stakes, this is your chance to compete,
-            collaborate, and claim victory! Gather your squad and sign up now –
-            the battle for glory begins!
-          </motion.p>
         </div>
       </div>
     </main>
