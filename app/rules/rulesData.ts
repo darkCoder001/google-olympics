@@ -84,28 +84,16 @@ export const rulesData: Checkpoint[] = [
     number: 5,
     games: [
       {
-        name: "Tissue Paper roll game",
-        rules: [
-          "The team will be provided with a cup filled to the brim with water kept on a tissue paper",
-          "The goal is to drag the tissue paper slowly without dropping any water",
-          "The farther you drag the tissue paper the more points you’ll get",
-        ],
+        name: "Locked",
+        rules: ["-"],
       },
       {
-        name: "Standing on a leg + throwing the stones/balls",
-        rules: [
-          "The goal is that all the members of the team will stand on one leg and are supposed to knock out some stones kept at a distance from them",
-          "There would be 4 stones kept in front of each member and unless all 4 stones are knocked out, no member is allowed to get back on two legs",
-          "The participants can then opt for Double or nothing, which will double the distance but also double the points",
-          "3 chances would be given, if all exhausted then negative points",
-        ],
+        name: "Locked",
+        rules: ["-"],
       },
       {
-        name: "Penalty Accuracy game",
-        rules: [
-          "A small cardboard will be kept and the people are supposed to kick tennis balls into the box",
-          "Double or nothing applicable",
-        ],
+        name: "Locked",
+        rules: ["-"],
       },
     ],
   },
