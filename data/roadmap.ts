@@ -21,7 +21,7 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
     checkpoint: "Checkpoint 1",
     cards: [
       {
-        title: "MonkeyType Game",
+        title: "Monkey Typing",
         src: "/images/monkey.webp",
         content: `📍 Location: Base Camp (Arch 102)
         
@@ -29,7 +29,7 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
 🖥️ Requirements: Laptops (by the teams).`,
       },
       {
-        title: "Uno Flip Game",
+        title: "Card Memory Game",
         src: "/images/uno.jpg",
         content: `📍 Location: Base Camp (AR)
         
@@ -55,7 +55,7 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
     checkpoint: "Checkpoint 3",
     cards: [
       {
-        title: "Pixelated Photo Game",
+        title: "Pixelated Bingo",
         src: "/images/pixel.webp",
         content: `📍 Location: Cycle parking area of AB  
         
@@ -70,7 +70,7 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
     checkpoint: "Checkpoint 4",
     cards: [
       {
-        title: "Tower Defense Game",
+        title: "Tower Defense",
         src: "/images/tower.jpg",
         content: `📍 Location: Guest House  
         
@@ -87,37 +87,19 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
     checkpoint: "Checkpoint 5",
     cards: [
       {
-        title: "Tissue Paper Roll Game",
-        src: "/images/roll.jpeg",
-        content: `📍 Location: In front of Mayuri  
-        
-⏳ Approx Time: 5 minutes  
-📝 Point System:
-  - Every 15 cm the cup is dragged = 100 points
-  - If less than 20 cm = -100 points
-        `,
+        title: "??",
+        src: "/images/lock-img.png",
+        content: ``,
       },
       {
-        title: "Standing on a Leg + Throwing the Stones/Balls",
-        src: "/images/onelegstand.jpg",
-        content: `📍 Location: In front of Mayuri  
-        
-⏳ Approx Time: 5 minutes  
-📝 Point System:
-  - Successfully knocking out all stones = 500 points, else -100
-  - Double or nothing increases only positive points
-        `,
+        title: "??",
+        src: "/images/lock-img.png",
+        content: ``,
       },
       {
-        title: "Penalty Accuracy Game",
-        src: "/images/penalty.jpg",
-        content: `📍 Location: In front of Mayuri  
-        
-⏳ Approx Time: 5 minutes  
-📝 Point System:
-  - Successful penalty within 2 tries = 500 points, else -100
-  - Double or nothing applies only to positive points
-    `,
+        title: "??",
+        src: "/images/lock-img.png",
+        content: ``,
       },
     ],
   },
@@ -134,8 +116,8 @@ export const roadmapCheckpoints: RoadmapCheckpoint[] = [
   - Successful code run = 1000 points`,
       },
       {
-        title: "Improv",
-        src: "/images/Improv.webp",
+        title: "Improv: Questions Only",
+        src: "/images/improv.jpeg",
         content: `📍 Location: AR Base Camp  
         
 ⏳ Approx Time: As much as it can be dragged for  `,
